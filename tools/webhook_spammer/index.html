@@ -1,0 +1,92 @@
+
+<html>
+   <head>
+      <title>Webhook Spammer</title>
+      <link rel="icon" type="image/png" href="https://i.redd.it/0x7im14ybp251.jpg"/>
+      <meta name="viewport" content="width=device-width">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta property="og:title" content="Webhook Spammer"/>
+      <meta property="og:type"   content="website" />
+      <meta property="og:image" content="https://i.redd.it/0x7im14ybp251.jpg">
+      <meta property="og:description" content="Free Online Discord Webhook Spammer!" />
+      <meta name="keywords" content="Discord, Flood, Webhook, Spam, Spammer, free, tool, cool">
+      <style>
+         body {background-color: #2c2f33; font-family: Arial, Helvetica, sans-serif}
+         input[type=text] {
+         width: 30%;
+         padding: 12px 20px;
+         margin: 8px 0;
+         box-sizing: border-box;
+         background-color: #7289da;
+         color: white;
+         }
+         .button {
+         background-color: #75055d; /* Green */
+         border: none;
+         color: white;
+         padding: 15px 32px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         margin: 4px 2px;
+         cursor: pointer;
+         }
+         h1 {color: white}
+         label {color: white}
+         div {text-align: center;}
+      </style>
+   </head>
+   <body>
+      <script>
+         function spam(){
+         var whook = document.getElementById("whook").value;
+         var wname = document.getElementById("wname").value;
+         var wtext = document.getElementById("wtext").value;
+         var wav = document.getElementById("wav").value;
+         console.log(whook + ", " + wname + ", " + wtext + ", " + wav)
+         if (whook == null || whook == "", wtext == null || wav == "") {
+             alert("You need to fill the required tabs.");
+             return;
+         }
+         alert("Use this tool at your own risk, I am not responsible for any damage you do. Close the tab if you want to exit.")
+         alert("Starting to spam.")
+         
+         setInterval(function(){
+             var request = new XMLHttpRequest();
+             request.open("POST", whook);
+         
+             request.setRequestHeader('Content-type', 'application/json');
+         
+             var params = {
+                 username: wname,
+                 avatar_url: wav,
+                 content: wtext
+         }
+         
+             request.send(JSON.stringify(params));
+         }, 200);
+         }
+      </script>
+      <div id="title">
+         <h1>Discord Webhook Spammer</h1>
+      </div>
+      <div id="container">
+         <form>
+            <pre> </pre>
+            <label for="whook">Webhook URL</label><br>
+            <input type="text" id="whook" name="whook"><br>
+            <pre> </pre>
+            <label for="wname">Webhook Nickname</label><br>
+            <input type="text" id="wname" name="wname" value="Johny">
+            <pre> </pre>
+            <label for="wtext">Webhook Avatar (Direct URL)</label><br>
+            <input type="text" id="wav" name="wav"><br>
+            <pre> </pre>
+            <label for="wtext">Webhook Text</label><br>
+            <input type="text" id="wtext" name="wtext" value="Joe Mama"><br>
+            <pre> </pre>
+         </form>
+         <button class="button" onclick="spam()">Start Spamming</button>
+      </div>
+   </body>
+</html>
